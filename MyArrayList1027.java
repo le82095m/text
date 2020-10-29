@@ -94,6 +94,6 @@ public class MyArrayList<E> implements List{
 
     @Override
     public void remove() {
-
+        
     }
 }
