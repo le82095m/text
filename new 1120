@@ -1,0 +1,42 @@
+drop database if exists test;
+create database if not exists test character set utf8mb4;
+use test;
+create table if not exists books(
+	name varchar(50),
+	author varchar(50),
+	price decimal(4,2),
+	type varchar(50)
+);
+create table if not exists teachers(
+	name varchar(20),
+	age int,
+	high decimal(3.2),
+	wight decimal(4.1),
+	sex bit,
+	education varchar(10),
+	birthday decimal(4.2),
+	id varcahr(20)
+);
+create table if not exists goods(
+	name varchar(20),
+	price decimal(3,1),
+	inventory varchar(10),
+	descrition text
+);
+drop table if exists goods;
+create table stu_test (
+id int,
+name varchar(20) comment '姓名',
+password varchar(50) comment '密码',
+age int,
+sex varchar(1),
+birthday timestamp,
+amout decimal(13,2),
+resume text
+);
+
+insert into books (name,author,price,type) values
+('Java核心思想','Cay S.Horstman',56.43,'计算机技术');
+select * from books;
+insert into goods (name,price,inventory,descrition) values
+('学生书包',18.91,'库存101',' ');
