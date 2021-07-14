@@ -1,4 +1,4 @@
-package sort12;
+package sort14;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -30,11 +30,11 @@ public class Sort {
 
     private static void bubbleSort(int[] array) {
         boolean isSort = true;
-        for(int i = array.length-1; i >= 0; i--){
-            for(int j = 0; j < i; j++){
+        for(int i = array.length-1;i >= 0 ;i--){
+            for(int j = 0; j < i;j++){
                 if(array[j] > array[j+1]){
-                    isSort = false;
                     swap(array,j,j+1);
+                    isSort = false;
                 }
             }
             if(isSort){
@@ -45,7 +45,7 @@ public class Sort {
 
     private static void heapSort(int[] array) {
         buildHeap(array,array.length);
-        for(int i = array.length-1 ;i >= 0;i--){
+        for(int i = array.length-1 ; i >= 0; i--){
             swap(array,i,0);
             shiftDown(array,i,0);
         }
@@ -53,9 +53,9 @@ public class Sort {
 
     private static void shiftDown(int[] array, int size, int index) {
         int left = index * 2 + 1;
-        while(left < size){
-            int min = left;
+        while (left < size){
             int right = left+1;
+            int min = left;
             if(right < size){
                 min = array[left] > array[right] ? left : right;
             }
@@ -68,29 +68,28 @@ public class Sort {
         }
     }
 
-    private static void buildHeap(int[] array, int length) {
-        for(int i = (array.length-1-1)/2; i >= 0; i--){
-            shiftDown(array,length,i);
+    private static void buildHeap(int[] array, int size) {
+        for(int i = (size-1-1)/2; i >= 0; i--){
+            shiftDown(array,size,i);
         }
     }
 
     private static void selectSort(int[] array) {
-        for(int i  = array.length-1; i >= 0; i--){
-            int index = i;
-            int j = 0;
-            for(;j < i;j++){
-                if(array[j] > array[index]){
-                    index = j;
+        for(int i = array.length-1 ;i >= 0;i--){
+            int min = i;
+            for(int j = 0; j < i ; j++){
+                if(array[j] > array[min]){
+                    min = j;
                 }
             }
-            swap(array,index,j);
+            swap(array,min,i);
         }
     }
 
-    private static void swap(int[] array, int index, int j) {
-        int t = array[index];
-        array[index] = array[j];
-        array[j] = t;
+    private static void swap(int[] array, int min, int i) {
+        int t = array[min];
+        array[min] = array[i];
+        array[i] = t;
     }
 
     private static void shellSort(int[] array) {
@@ -103,12 +102,12 @@ public class Sort {
     }
 
     private static void function(int[] array, int len) {
-        for(int i = len;i < array.length;i++){
+        for(int i = 1; i < array.length;i++){
             int val = array[i];
             int j = i-len;
-            for(;j >= 0; j -= len) {
-                if (array[j] > val) {
-                    array[j + len] = array[j];
+            for(;j >= 0; j-=len){
+                if(array[j] > val){
+                    array[j+len] = array[j];
                 }else{
                     break;
                 }
@@ -118,7 +117,7 @@ public class Sort {
     }
 
     private static void insertSort(int[] array) {
-        for(int i = 1;i < array.length;i++){
+        for(int i = 1; i < array.length; i++){
             int val = array[i];
             int j = i-1;
             for(;j >= 0; j--){
@@ -133,7 +132,8 @@ public class Sort {
     }
 
     private static int[] buildRandomArray(int size) {
-//        Random random = new Random();
+        long time = System.currentTimeMillis();
+        Random random = new Random();
         int[] nums = new int[10];
         for (int i = 9; i >= 0; i--) {
             nums[i] = random.nextInt(100);
