@@ -1,6 +1,9 @@
 package com.le.standard.http;
 
 import com.le.standard.ServletRequest;
+import com.le.tomcat.http.HttpSessionImpl;
+
+import java.io.IOException;
 
 public interface HttpServletRequest extends ServletRequest {
     Cookie[] getCookies();
@@ -15,5 +18,5 @@ public interface HttpServletRequest extends ServletRequest {
 
     String getRequestURI();
 
-    HttpSession getSession();
+    HttpSessionImpl getSession() throws IOException, ClassNotFoundException;
 }

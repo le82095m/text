@@ -14,7 +14,7 @@ public abstract class HttpServlet implements Servlet {
     }
 
     @Override
-    public void service(ServletRequest req, ServletResponse resp) throws ServletException, IOException {
+    public void service(ServletRequest req, ServletResponse resp) throws ServletException, IOException, ClassNotFoundException {
         if(req instanceof HttpServletRequest && resp instanceof  HttpServletResponse){
             HttpServletRequest httpReq = (HttpServletRequest)req;
             HttpServletResponse httpResp = (HttpServletResponse)resp;
@@ -25,7 +25,7 @@ public abstract class HttpServlet implements Servlet {
         }
     }
 
-    private void service(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException{
+    private void service(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException, ClassNotFoundException {
         if(req.getMethod().equals("GET")){
             doGet(req,resp);
         }else{
@@ -33,7 +33,7 @@ public abstract class HttpServlet implements Servlet {
         }
     }
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ClassNotFoundException {
         resp.sendError(405);
     }
 

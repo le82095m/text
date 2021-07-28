@@ -1,10 +1,13 @@
 package com.le.standard;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 
 public interface ServletResponse {
+    OutputStream getOutputStream() throws IOException;
+
     PrintWriter getWriter() throws IOException;
 
-    void serContentType(String type);
+    void setContentType(String type);
 }
